@@ -1,4 +1,4 @@
-# flask-news-app
+# RSS News App written using Flask Framework
 
 Python Flask app to fetch latest news from a variety of sources
 
