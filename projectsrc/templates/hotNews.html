@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>News from all around the world</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel=stylesheet type=text/css href="static/style.css" media="screen">
+    </head> 
+
+    <body>
+
+        <form id="rcorners" action="{{ url_for('newsSpider') }}" method="post">
+                <select name = "newsSection" style="font-size:30px;">
+                    {% for key in rssUrlList.keys() %}
+                        <option value = {{ key }} {% if key == selectedNewsSection %} selected {% endif %}> {{ key }} </option>
+                    {% endfor %}
+                </select>
+            <button id="rbutton" type="submit">Get my News</button>
+        </form>
+
+        
+        <div>
+
+            {% if result is defined and result|length > 0 %}
+                <h1 align="center"> News related to {{selectedNewsSection}}!</h1>
+                    {% for key,value in result.items() %}
+                                {% if value is mapping %}
+                                    {% for k,v in value.items() %}
+                                        {% for news in v %}
+                                            <div id="newstext">
+                                                {{ news }}
+                                            </div>
+                                        {% endfor%}
+                                    {% endfor %}
+                                {% endif %}
+                    {% endfor %}
+
+            {% endif %}
+
+            {% if error %}
+                <p class="error"><strong>Error:</strong> {{ error }}
+            {% endif %}
+        </div>
+    </body>
+</html>
