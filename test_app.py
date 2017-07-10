@@ -6,7 +6,7 @@ The file has the unit tests that are to be run against our RSS Feed Parser
 """
 
 import unittest
-from appsrc import app
+from appsrc import APP
 
 class FlaskAppTests(unittest.TestCase):
     """
@@ -22,11 +22,11 @@ class FlaskAppTests(unittest.TestCase):
         pass
 
     def setUp(self):
-        app.config['TESTING'] = True
+        APP.config['TESTING'] = True
         # creates a test client
-        self.app = app.test_client()
+        self.APP = APP.test_client()
         # propagate the exceptions to the test client
-        self.app.testing = True
+        self.APP.testing = True
 
     def tearDown(self):
         pass
@@ -37,7 +37,7 @@ class FlaskAppTests(unittest.TestCase):
         """
         # sends HTTP GET request to the application
         # on the specified path
-        response = self.app.get('/newsSpider')
+        response = self.APP.get('/newsSpider')
         # assert the status code of the response
         self.assertEqual(response.status_code, 200)
 
@@ -47,7 +47,7 @@ class FlaskAppTests(unittest.TestCase):
         """
         # sends HTTP GET request to the application
         # on the specified path
-        response = self.app.post('/newsSpider',\
+        response = self.APP.post('/newsSpider',\
                                  data=dict(newsSection="india"),\
                                  follow_redirects=True)
 
@@ -59,7 +59,7 @@ class FlaskAppTests(unittest.TestCase):
         """
         Make GET request for non-existent page to re-load and get return code as 200
         """
-        response = self.app.get('/admin_view_users')
+        response = self.APP.get('/admin_view_users')
         self.assertEqual(response.status_code, 302)
 
 
