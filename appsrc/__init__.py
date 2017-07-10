@@ -118,7 +118,7 @@ def newsSpider():
                 # cutOffTime = 57600
                 cutOffTime = int(event['cutOffTime'])
             else:
-                cutOffTime = 18000
+                cutOffTime = 50000
 
             try:
                 feed = feedparser.parse(url)
