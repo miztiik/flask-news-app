@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 # run.py
 """This script calls the main __init__.py"""
 
