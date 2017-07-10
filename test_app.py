@@ -1,10 +1,17 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
+"""
+The file has the unit tests that are to be run against our RSS Feed Parser
+"""
+
 import unittest
-from projectsrc import app
+from appsrc import app
 
 class FlaskAppTests(unittest.TestCase):
+    """
+    Class to contain the unit test cases
+    """
 
     @classmethod
     def setUpClass(cls):
@@ -25,6 +32,9 @@ class FlaskAppTests(unittest.TestCase):
         pass
 
     def test_home_status_code(self):
+        """
+        Make GET request to load the home page and get return code as 200
+        """
         # sends HTTP GET request to the application
         # on the specified path
         response = self.app.get('/newsSpider')
@@ -32,15 +42,23 @@ class FlaskAppTests(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
 
     def test_home_data(self):
+        """
+        Make POST request to load the results page and get return code as 200
+        """
         # sends HTTP GET request to the application
         # on the specified path
-        response = self.app.post('/newsSpider', data=dict(newsSection="india"), follow_redirects=True)
+        response = self.app.post('/newsSpider',\
+                                 data=dict(newsSection="india"),\
+                                 follow_redirects=True)
 
         # assert the response data
         #self.assertEqual(response.data, "-#--#--#--#--#--#--#--#--#--#--#--#-")
         self.assertEqual(response.status_code, 200)
 
     def test_site_invalid_access(self):
+        """
+        Make GET request for non-existent page to re-load and get return code as 200
+        """
         response = self.app.get('/admin_view_users')
         self.assertEqual(response.status_code, 302)
 
