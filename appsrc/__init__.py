@@ -11,7 +11,8 @@ import feedparser
 from flask import Flask, render_template, redirect, url_for, request
 # import traceback,pdb,os
 
-APP = Flask(__name__, instance_relative_config=True)
+application = Flask(__name__, instance_relative_config=True)
+APP = application
 
 @APP.route("/")
 def homepage():
