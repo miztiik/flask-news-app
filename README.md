@@ -25,7 +25,7 @@ source /var/flask-news-app/bin/activate
 pip install -r requirements.txt
 ```
 
-# Start `gunicorn`
+## Start `gunicorn`
 Start the `gunicorn` and bind it port `8000` and listen on all interfaces
 
 ```py
@@ -33,6 +33,32 @@ gunicorn --bind 0.0.0.0:8000 wsgi:APP &
 ```
 
 ## Optional
+Lets use `supervisor` to manage our gunicorn. It will run `gunicorn` server in the background and also start it automatically on reboot.
+
+### Create `.conf` for Supervisord
+```
+touch /var/flask-news-app/flask-news-app-supervisor.conf
+cat > << "EOF"
+[program:flask-news-app-supervisor.conf]
+command = /var/flask-news-app/bin/python
+/home/deploy/.virtualenvs/flask-news-app/bin/gunicorn --bind 0.0.0.0:8000 wsgi:APP -w 4
+directory = /var/flask-news-app
+# user = deploy
+# stdout_logfile = /var/flask-news-app/logs/gunicorn/gunicorn_stdout.log
+# stderr_logfile = /var/flask-news-app/logs/gunicorn/gunicorn_stderr.log
+# redirect_stderr = True
+environment = PRODUCTION=1
+EOF
+```
+
+#### Update `supervisor` and Re-Start 
+```sh
+(flask-news-app) $ supervisorctl reread
+(flask-news-app) $ supervisorctl update
+(flask-news-app) $ supervisorctl start flask-news-app-supervisor
+```
+
+
 #### Setup NGNINX as WebServer
 
 ```sh
