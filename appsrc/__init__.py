@@ -9,6 +9,7 @@ import json
 import requests
 import feedparser
 from flask import Flask, render_template, redirect, url_for, request
+import logging
 # import traceback,pdb,os
 
 APP = Flask(__name__, instance_relative_config=True)
@@ -153,9 +154,11 @@ def newsSpider():
                     articles[ 'mediagroup' ] = mediagroup
 
             except Exception as e:
-                articles[ 'newsitems' ] = "Error : " + traceback.format_exc()
+                newsitems.append("Error : " + str(e))
+                articles[ 'newsitems' ] = newsitems
                 articles[ 'sectiontitle' ] = sectiontitle
                 articles[ 'mediagroup' ] = mediagroup
+                # logging.exception('Failed to do something: ' + str(e))
 
             # Lets collate the news
             collateNews ( articles )
