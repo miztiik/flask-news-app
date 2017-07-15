@@ -26,6 +26,9 @@ pip install -r requirements.txt
 ```
 
 ## Start `gunicorn`
+```py
+pip install gunicorn
+```
 Start the `gunicorn` and bind it port `8000` and listen on all interfaces
 
 ```py

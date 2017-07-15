@@ -7,14 +7,14 @@
 ##
 ## Ref [1]      :   http://mherman.org/blog/2015/03/06/node-with-docker-continuous-integration-and-delivery/
 ## Ref [2]      :   http://blog.hypriot.com/post/docker-compose-nodejs-haproxy/
-## How-To Build :   docker build -t "simple_flask:dockerfile" .
+## How-To Build :   docker build -t "flask-news-app" .
 ## How-To Run   :   docker run -dti --name t1 -p 8000:8000  flask-news-app bash
 ##################################################################################
 FROM jfloff/alpine-python
 MAINTAINER mystique
 
 # Setup the Virtual Environment
-RUN pip install virtualenv
+RUN pip install virtualenv gunicorn
 
 # Setup the App environment
 RUN cd /var \
