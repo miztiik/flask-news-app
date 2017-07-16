@@ -30,6 +30,5 @@ EXPOSE 8000
 # apk update && apk add ca-certificates && update-ca-certificates && apk add openssl
 
 # Start the `gunicorn` and bind it port `8000` and listen on all interfaces
-# CMD [ "sh", "-c", "echo $HOME" ]
-ENTRYPOINT ["/usr/bin/gunicorn", "--pythonpath", "'/var/flask-news-app'", "--bind", "0.0.0.0:8000"]
-CMD ["appsrc.wsgi:APP"]
+# CMD ["/usr/bin/gunicorn appsrc.wsgi:APP", "--pythonpath '/var/flask-news-app'", "--bind", "0.0.0.0:8000"]
+ENTRYPOINT ["sh", "/var/flask-news-app/docker-entrypoint.sh"]
