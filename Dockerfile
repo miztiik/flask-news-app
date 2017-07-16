@@ -14,15 +14,13 @@ FROM jfloff/alpine-python
 MAINTAINER mystique
 
 # Setup the Virtual Environment
-RUN pip install virtualenv gunicorn
+RUN pip install gunicorn
 
 # Setup the App environment
+# Since it is a container image installing lib/binaries globally
 RUN cd /var \
     && git clone https://github.com/miztiik/flask-news-app.git \
     && cd /var/flask-news-app \
-    ### Create a Virtual Environment for our App
-    && virtualenv /var/flask-news-app \
-    && source /var/flask-news-app/bin/activate \
     ### Install the App dependencies
     && pip install -r requirements.txt
 
@@ -33,4 +31,4 @@ EXPOSE 8000
 
 # Start the `gunicorn` and bind it port `8000` and listen on all interfaces
 # CMD [ "sh", "-c", "echo $HOME" ]
-CMD [ "gunicorn", "--bind", "0.0.0.0:8000", "wsgi:APP", "&"]
+ENTRYPOINT ["/usr/bin/gunicorn", "--pythonpath", "'/var/flask-news-app'", "--bind", "0.0.0.0:8000", "appsrc.wsgi:APP"]
