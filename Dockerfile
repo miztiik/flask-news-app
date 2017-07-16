@@ -31,4 +31,5 @@ EXPOSE 8000
 
 # Start the `gunicorn` and bind it port `8000` and listen on all interfaces
 # CMD [ "sh", "-c", "echo $HOME" ]
-ENTRYPOINT ["/usr/bin/gunicorn", "--pythonpath", "'/var/flask-news-app'", "--bind", "0.0.0.0:8000", "appsrc.wsgi:APP"]
+ENTRYPOINT ["/usr/bin/gunicorn", "--pythonpath", "'/var/flask-news-app'", "--bind", "0.0.0.0:8000"]
+CMD ["appsrc.wsgi:APP"]
