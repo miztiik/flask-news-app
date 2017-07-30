@@ -74,8 +74,7 @@ Client Request ----> Nginx (Reverse-Proxy)
 ```
 
 ### About the Code
-Python Flask app to fetch latest news from a variety of sources
-
+Python Flask application to fetch latest news from a variety of sources
 
 ### News Fetcher
 The `__init__.py` has the RSS feed parser code and the various RSS links to new media sites hardcoded along with the `news relevancy timeline`
@@ -86,4 +85,4 @@ The `__init__.py` has the RSS feed parser code and the various RSS links to new 
  - Make a `POST` request and check if http return code is `200`
  - Make a `POST` request for invalid url and check return code is `302`
 
-Please feel free to add to them
+If you are interested, Please feel free to add to them :)
