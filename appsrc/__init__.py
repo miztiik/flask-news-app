@@ -12,16 +12,17 @@ from flask import Flask, render_template, redirect, url_for, request
 import logging
 # import traceback,pdb,os
 
-APP = Flask(__name__, instance_relative_config=True)
+# # Create and configure the Flask app
+application = Flask(__name__, instance_relative_config=True)
 
-@APP.route("/")
+@application.route("/")
 def homepage():
     """
     Define the home page elements
     """
     return render_template("welcome.html")
 
-@APP.route('/<get_usr_txt>')
+@application.route('/<get_usr_txt>')
 def not_homepage(get_usr_txt):
     """
     Define the redirect page for requests to non-existing pages
@@ -32,7 +33,7 @@ def not_homepage(get_usr_txt):
 # For Test failures, change the return code to 404
 #-#-#-#-#-#-#-#-#-#-#-#-#
 
-@APP.route("/newsSpider", methods = ["GET", "POST"] )
+@application.route("/newsSpider", methods = ["GET", "POST"] )
 def newsSpider():
     """
     Accepts both GET and POST requests. If it's a GET request,
