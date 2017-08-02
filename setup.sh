@@ -23,7 +23,7 @@ pip install gunicorn
 
 # Start `gunicorn`
 # Start the `gunicorn` and bind it port `8000` and listen on all interfaces
-gunicorn --bind 0.0.0.0:8000 wsgi:APP &
+gunicorn --bind 0.0.0.0:8000 wsgi:application &
 
 # Deactivate
 deactivate
