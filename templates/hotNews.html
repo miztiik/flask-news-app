@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>News from all around the world</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel=stylesheet type=text/css href="static/style.css" media="screen">
-    </head> 
-
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>News from all around the world</title>
+    <link href="{{ url_for('static', filename="css/style.css") }}" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Mystique">
+  </head>
     <body>
 
         <form id="rcorners" action="{{ url_for('newsSpider') }}" method="post">

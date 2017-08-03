@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Welcome to Flask News App</title>
+    <link href="{{ url_for('static', filename="css/style.css") }}" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Mystique">
+  </head>
+  
+    <body>
+            <h1>Check out the latest news
+            <a href="{{ url_for('newsSpider') }}">here!</a>
+            </h1>
+    </body>
+</html>
