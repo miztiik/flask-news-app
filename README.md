@@ -32,7 +32,7 @@ pip install gunicorn
 Start the `gunicorn` and bind it port `8000` and listen on all interfaces
 
 ```py
-gunicorn --bind 0.0.0.0:8000 wsgi:APP &
+gunicorn --bind 0.0.0.0:8000 wsgi:application &
 ```
 
 ## Optional
@@ -44,7 +44,7 @@ touch /var/flask-news-app/flask-news-app-supervisor.conf
 cat > << "EOF"
 [program:flask-news-app-supervisor.conf]
 command = /var/flask-news-app/bin/python
-/home/deploy/.virtualenvs/flask-news-app/bin/gunicorn --bind 0.0.0.0:8000 wsgi:APP -w 4
+/home/deploy/.virtualenvs/flask-news-app/bin/gunicorn --bind 0.0.0.0:8000 wsgi:application -w 4
 directory = /var/flask-news-app
 # user = deploy
 # stdout_logfile = /var/flask-news-app/logs/gunicorn/gunicorn_stdout.log
