@@ -6,7 +6,8 @@ The file has the unit tests that are to be run against our RSS Feed Parser
 """
 
 import unittest
-from appsrc import application
+# from appsrc import application
+import application
 
 class FlaskAppTests(unittest.TestCase):
     """
