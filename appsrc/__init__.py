@@ -13,7 +13,7 @@ import logging
 # import traceback,pdb,os
 
 # # Create and configure the Flask app
-application = Flask(__name__, instance_relative_config=True)
+application = Flask(__name__, instance_relative_config=True, template_folder="../templates")
 
 @application.route("/")
 def homepage():
