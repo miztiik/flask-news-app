@@ -32,7 +32,22 @@ pip install gunicorn
 Start the `gunicorn` and bind it port `8000` and listen on all interfaces
 
 ```py
-gunicorn --bind 0.0.0.0:8000 wsgi:application &
+gunicorn --bind 0.0.0.0:8000 application &
+```
+
+### Running as docker container
+```sh
+# Build using the attached docker file
+docker build -t mystique/flask-news-app .
+
+# (or easily) Pull the latest image from docker hub
+docker pull mystique/flask-news-app
+
+# Run the app
+docker run -dti -p 8000:8000 --name newsapp docker pull mystique/flask-news-app
+
+# If you want to override the port to any other custom port, say 80
+docker run -dti -p 80:80 --name newsapp mystique/flask-news-app --bind 0.0.0.0:80
 ```
 
 ## Optional
