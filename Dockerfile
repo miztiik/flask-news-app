@@ -26,4 +26,5 @@ RUN cd /var \
 EXPOSE 8000
 
 # Start the `gunicorn` and bind it port `8000` and listen on all interfaces
-ENTRYPOINT ["sh", "/var/flask-news-app/docker-entrypoint.sh"]
+# ENTRYPOINT ["sh", "/var/flask-news-app/docker-entrypoint.sh"]
+ENTRYPOINT ["gunicorn", "application", "--name", "flask-news-app", "--bind", "0.0.0.0:8000"]
