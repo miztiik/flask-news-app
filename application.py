@@ -7,4 +7,4 @@ from appsrc import application
 if __name__ == "__main__":
     application.run()
 
-# gunicorn --bind 0.0.0.0:8000 wsgi:APP &
+# gunicorn --bind 0.0.0.0:8000 application &
