@@ -26,6 +26,7 @@ pip install -r requirements.txt
 ```
 
 ## Start `gunicorn`
+The built-in development server is single threaded, We will need a multithreaded server to support production workloads. We will be using `gunicorn` here,
 ```py
 pip install gunicorn
 ```
